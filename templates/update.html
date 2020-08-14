@@ -1,0 +1,26 @@
+{% extends 'source.html' %}
+
+{% block title%}
+<title>Accueil</title>
+{%endblock%}
+
+{%block body%}
+<form action="/update/{{post_to_update.id}}" method="POST">
+    <div class="form-group">
+      <label for="titre">Titre de l'article</label>
+      <input type="text" class="form-control" name="titre" id="titre" placeholder="Titre de l'article"  value="{{post_to_update.title}}">
+    </div>
+
+
+    <div class="form-group">
+      <label for="article">Contenu de l'article</label>
+      <textarea class="form-control" id="article" name="article" rows="3" placeholder="Votre article ici" style="resize: none;">
+        {{post_to_update.title}}
+    </textarea>
+    </div>
+
+    <div class="form-group">
+         <button type="submit" class="btn btn-success"> Mise a jour</button>
+      </div>
+  </form>
+{%endblock%}

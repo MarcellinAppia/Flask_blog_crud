@@ -1,0 +1,36 @@
+{% extends 'source.html' %}
+
+{% block title%}
+<title>Blog</title>
+{%endblock%}
+
+{%block body%}
+
+{% if articles | length >= 1 %}
+<a href="/blog/newblog" class="btn btn-primary">Ajouter un nouvel article</a>
+{%endif%}
+
+{% if articles | length < 1 %}
+
+<div class="alert alert-primary mt-3" role="alert">
+    <p>Aucun article disponible pour l'instant. Ajouter un article <a href="/blog/newblog">Ici</a></p>
+  </div>
+{% else %}
+<div class="card-group mt-3" style="box-shadow: 2px 4px 6px 8px rgba(173, 171, 171, 0.178);">
+    {% for article in articles%}
+    <div class="card mr-3">
+        <img  class="card-img-top" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="card-img-top" alt="picture">
+        <div class="card-body">
+          <h5 class="card-title">{{article.title}}</h5>
+          <p class="card-text">{{article.content}}</p>
+          <p class="card-text" style="display:flex; justify-content: space-between;">
+            <small class="text-muted">Posté le {{article.created_at}}</small>
+            <a href="/update/{{article.id}}" class="btn btn-success mr-2"><small class="" style="color:white;">Modifier</small></a>
+            <a href="/supprimer/{{article.id}}" class="btn btn-danger"><small class="" style="color:white;">Supprimer</small></a>
+        </p>
+        </div>
+      </div>
+    {%endfor%}
+  </div>
+{%endif%}
+{%endblock%}

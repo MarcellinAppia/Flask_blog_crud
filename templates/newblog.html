@@ -1,0 +1,24 @@
+{% extends 'source.html' %}
+
+{% block title%}
+<title>Accueil</title>
+{%endblock%}
+
+{%block body%}
+<form action="/blog/newblog" method="POST">
+    <div class="form-group">
+      <label for="titre">Titre de l'article</label>
+      <input type="text" class="form-control" name="titre" id="titre" placeholder="Titre de l'article">
+    </div>
+
+
+    <div class="form-group">
+      <label for="article">Contenu de l'article</label>
+      <textarea class="form-control" id="article" name="article" rows="3" placeholder="Votre article ici" style="resize: none;"></textarea>
+    </div>
+
+    <div class="form-group">
+         <button type="submit" class="btn btn-success"> Poster l'article</button>
+      </div>
+  </form>
+{%endblock%}
